@@ -1,0 +1,22 @@
+def Leaky_relu(x):
+    A = []
+    for i in x:
+        t = []
+        for j in i:
+            tt = j if j>0 else 0.001*j
+            t.append(tt)
+        A.append(t)
+    cache = x
+    return A, cache
+
+def Leaky_relu_back(dA, cache):
+    Z = cache
+    dZ = []
+    for i in dA:
+        t = []
+        for j in i:
+            tt = j if j>0 else 0.001*j
+            t.append(tt)
+        dZ.append(t)
+    assert (shapeSize(dZ) == shapeSize(Z))
+    return dZ
